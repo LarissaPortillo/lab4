@@ -2,4 +2,8 @@ d3.csv('https://cdn.glitch.com/ae0235a1-538a-483e-b9a1-c0773a2dc129%2Fwealth-hea
   .then(data=>{
   data=data;
   console.log(data);
+  
+  d3.select('.chart').append('svg');
+  
+  
 })
