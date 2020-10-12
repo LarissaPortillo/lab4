@@ -20,17 +20,15 @@ d3.csv('https://cdn.glitch.com/ae0235a1-538a-483e-b9a1-c0773a2dc129%2Fwealth-hea
     .domain(d3.extent(data, (d)=>{return d.Income;}))
     .range(d3.extent(data, (d)=>{ return d.LifeExpectancy;}));
   
-  
-  
  svg.selectAll('.income')
   .data(data)
   .enter()
   .append('circle')
   .attr('cx', d=> xScale(d.Income))
-  .attr('cy', d=> xScale(d.LifeExpectancy))
+ // .attr('cy', d=> xScale(d.LifeExpectancy))
   .attr('r',5)
   .attr('fill', 'orange')
-  .attr('class','income')
+  .attr('class','income') 
   .attr('stroke', 'darkorange');
 
 
