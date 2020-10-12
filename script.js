@@ -1,4 +1,4 @@
-d3.csv('https://cdn.glitch.com/ae0235a1-538a-483e-b9a1-c0773a2dc129%2Fwealth-health-2014.csv?v=1602435508884', d3.autotype)
+d3.csv('https://cdn.glitch.com/ae0235a1-538a-483e-b9a1-c0773a2dc129%2Fwealth-health-2014.csv?v=1602435508884', d3.autoType)
   .then(data=>{
   data=data;
   console.log(data);
@@ -14,7 +14,7 @@ d3.csv('https://cdn.glitch.com/ae0235a1-538a-483e-b9a1-c0773a2dc129%2Fwealth-hea
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
   
   console.log(d3.extent(data, d=>d.Income));
-  //console.log(d3.extent(data, d=> d.LifeExpectancy));
+  console.log(d3.extent(data, d=> d.LifeExpectancy));
   
   const xScale = d3.scaleLinear()
     .domain(d3.extent(data, (d)=>{return d.Income;}))
@@ -24,8 +24,8 @@ d3.csv('https://cdn.glitch.com/ae0235a1-538a-483e-b9a1-c0773a2dc129%2Fwealth-hea
   .data(data)
   .enter()
   .append('circle')
-  .attr('cx', (d)=>{ return xScale(d.Income)-9917;})
- // .attr('cy', d=> xScale(d.LifeExpectancy))
+  .attr('cx', d=> xScale(d.Income))
+  .attr('cy', d=> xScale(d.LifeExpectancy))
   .attr('r',5)
   .attr('fill', 'orange')
   .attr('class','income') 
