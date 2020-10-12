@@ -3,7 +3,6 @@ d3.csv('https://cdn.glitch.com/ae0235a1-538a-483e-b9a1-c0773a2dc129%2Fwealth-hea
   data=data;
   console.log(data);
   
-  
   const width = 400;
   const height = 300;
   
@@ -11,13 +10,20 @@ d3.csv('https://cdn.glitch.com/ae0235a1-538a-483e-b9a1-c0773a2dc129%2Fwealth-hea
     .attr('width',width)
     .attr('height', height);
   
+  console.log(d3.extent(data, d=>d.Income));
+  console.log(d3.extent(data, d=> d.LifeExpectancy));
+  
   const xScale = d3.scaleLinear()
     .domain(d3.extent(data, d=>d.Income))
-    .range([0,width]);
+    .range(d3.extent(data, d=> d.LifeExpectancy));
   
-  const xxScale = d3.scaleLinear()
-  .domain(d3.extent(data, d=> d.LifeExpectancy))
-  .range([0,width]);
- 
+ svg.selectAll('.income')
+  .data(data)
+  .enter()
+  .append('circle')
+  .attr('fill', 'orange')
+  .attr('class','income')
+  .attr('r',5)
+  .attr('cx', d=> xScale())
   
 })
