@@ -18,5 +18,6 @@ d3.csv('https://cdn.glitch.com/ae0235a1-538a-483e-b9a1-c0773a2dc129%2Fwealth-hea
   const xxScale = d3.scaleLinear()
   .domain(d3.extent(data, d=> d.LifeExpectancy))
   .range([0,width]);
-
+ 
+  
 })
