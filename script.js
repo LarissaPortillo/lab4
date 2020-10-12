@@ -3,8 +3,9 @@ d3.csv('https://cdn.glitch.com/ae0235a1-538a-483e-b9a1-c0773a2dc129%2Fwealth-hea
   data=data;
   console.log(data);
   
-  const width = 400;
+  const width = 400-margin.left -margin.right;
   const height = 300;
+  const margin = {top:20, left:20, bottom:20, right:20};
   
   const svg = d3.select('.chart').append('svg')
     .attr('width',width)
@@ -17,6 +18,8 @@ d3.csv('https://cdn.glitch.com/ae0235a1-538a-483e-b9a1-c0773a2dc129%2Fwealth-hea
     .domain(d3.extent(data, d=>d.Income))
     .range(d3.extent(data, d=> d.LifeExpectancy));
   
+  
+  
  svg.selectAll('.income')
   .data(data)
   .enter()
@@ -24,6 +27,6 @@ d3.csv('https://cdn.glitch.com/ae0235a1-538a-483e-b9a1-c0773a2dc129%2Fwealth-hea
   .attr('fill', 'orange')
   .attr('class','income')
   .attr('r',5)
-  .attr('cx', d=> xScale())
+  .attr('cx', d=> xScale(d.Income));
   
 })
